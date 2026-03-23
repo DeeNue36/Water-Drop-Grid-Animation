@@ -1,18 +1,78 @@
-# React + Vite
+# Water Drop Grid Animation 🌊
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interactive React animation featuring a 20×20 grid of water drop elements. Click any drop to trigger a mesmerizing ripple effect that animates the entire grid!
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Interactive Ripple Effect**: Click a water drop to animate scale, position, and opacity across all 400 drops with perfect stagger timing.
+- **Smooth Animations**: Powered by [AnimeJS](https://animejs.com/) with custom easing (easeOutSine, easeInOutQuad).
+- **Responsive Design**: Mobile-first layout (360px width), full-screen centering.
+- **Hover & Active States**: Gradient transitions and color shifts on interaction.
+- **Performance Optimized**: Staggered delays based on grid position from click origin.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **React** (functional components)
+- **Vite** (fast dev server & builds)
+- **AnimeJS** (powerful animation library)
+- **Tailwind CSS** (custom theme with water drop gradients)
 
-Note: This will impact Vite dev & build performances.
+## 🚀 Run Locally
 
-## Expanding the ESLint configuration
+1. **Clone/Download this project** to your local directory
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. **Install dependencies**:
+   ```
+   npm install
+   ```
+
+3. **Start development server**:
+   ```
+   npm run dev
+   ```
+
+4. **Open in browser**: e.g. localhost:5173
+
+**Click any water drop to see the magic!** 🎉
+
+## 🎮 How It Works
+
+- Grid: 20 columns × 20 rows = 400 water drops
+- **Click Handler**: Triggers AnimeJS timeline on all `.dot` elements
+- **Animation Properties**:
+  | Property | Values | Duration |
+  |----------|--------|----------|
+  | `scale` | 1 → 1.35 → 1 | 250ms + 500ms |
+  | `translateY` | 0 → -16px → 0 | 250ms + 500ms |
+  | `opacity` | 0.5 → 1 → 0.5 | 250ms + 500ms |
+- **Stagger**: 100ms delay per cell, origin from clicked index, grid-aware `[20,20]`
+
+## 📁 Project Structure
+
+```
+Water Drop Grid/
+├── src/
+│   ├── App.jsx              # Root component
+│   ├── components/
+│   │   └── WaterDropGrid.jsx # Grid + animation logic
+│   └── App.css              # Tailwind setup + custom theme
+├── public/
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## 🎨 Styling
+
+Custom Tailwind theme:
+```css
+--color-background: #373F47      /* Dark slate */
+--color-dots: #FB6376           /* Vibrant pink */
+--color-dots-hover: #FCB1A6     /* Light peach */
+--color-dots-active: #FFDCCC    /* Cream highlight */
+--color-text: #FFF9EC           /* Off-white */
+```
+
+
+**Built with ❤️ using React & AnimeJS**  
+License: MIT
