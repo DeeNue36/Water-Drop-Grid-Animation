@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #373F47;
+  --color-dots: #FB6376;
+  --color-dots-hover: #FCB1A6;
+  --color-dots-active: #FFDCCC;
+  --color-text: #FFF9EC;
+}
+
+@layer base {
+  body {
+    @apply bg-background w-360 max-w-full my-0 mx-auto min-h-svh flex flex-col items-center justify-center;
+  }
+}
+
+@layer components {
+  main {
+    @apply grid content-center w-full h-full;
+  }
+
+  .dots {
+    @apply grid w-fit;
+  }
+
+  .dots-group {
+    @apply cursor-crosshair rounded-full p-2 transition-colors hover:bg-dots-hover active:bg-dots-active;
+  }
+
+  .dot {
+    @apply h-2 w-2 rounded-full bg-gradient-to-b from-dots to-dots-hover to-dots-active opacity-50 group-hover:from-dots group-hover:to-text;
+  }
+}
